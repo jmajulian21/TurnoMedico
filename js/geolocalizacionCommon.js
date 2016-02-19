@@ -52,7 +52,7 @@ var Geolocalizacion = Geolocalizacion || {};
        google.maps.event.addListener(marker, 'click', function() {
 
           // Variable para definir el html del tooltip infowindow
-          var iwContent = '<div id="iw_container">' +
+          var iwContent = '<div id="iw_container ">' +
           '<div class="iw_title">' + nombre + '</div>' +
           '<div class="iw_content">' + direccion + '<br />' +
           codPostal + '</div></div>';

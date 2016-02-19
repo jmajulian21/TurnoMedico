@@ -5,29 +5,28 @@
 	//echo "<h2> Bienvenido: ". $_SESSION['registrado']."</h2>";
 ?>
  
-<table class="table" id="datatable" style=" background-color: beige;">
-	<!--<thead>
-		<tr>
-			<th>cantante</th><th>disco</th><th>año</th>
-		</tr>
-	</thead>-->
-	<tbody>
-<div id='container'></div>
-
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<table id="datatable">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Turnos</th>
+        </tr>
+    </thead>
+    <tbody>
 <?php 
-
+//' '.$rows["medico"]
 foreach ($arrayDemedicos as $rows) {
 	echo"<tr>
-			<td>".$rows["especialidad"]."</td>
-            <td>".$rows["apellido"]."</td>
-            <td>".$rows["nombre"]."</td>
+			<th>".$rows["apellido"]."</th>
 			<td>".$rows["cantidad"]."</td>
 		  </tr>  ";
         }
 		?>
 	</tbody>
 </table>
-<a onClick="MostrarLogin()'" class='btn btn-info'>Pagina Principal</a>
+<!--</div>-->
+
 <script type="text/javascript">
 
 $(function () {
@@ -39,7 +38,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: 'Data extracted from a HTML table in the page'
+            text: 'Estadistica de los Medicos Mas Solicitados'
         },
         yAxis: {
             allowDecimals: false,

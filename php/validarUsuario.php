@@ -1,21 +1,33 @@
-<?php 
+
+<?php
 session_start();
-$usuario=$_POST['usuario'];
-$clave=$_POST['clave'];
-
-
+require_once("../clases/AccesoDatos.php");
+require_once("../clases/paciente.php");
 $retorno;
 
-if($usuario=="julian@admin.com.ar" && $clave=="1234")
-{			
-	$_SESSION['registrado']="julian";
-	$retorno=" ingreso";
-
-	
-}else
+if($_POST['correo']=='admin@admin.com' && $_POST['clave']=='1234')
 {
-	$retorno= "No-esta";
+$retorno="Bienvenido: Aministrador Moreno";
+$_SESSION['registrado']='admin';
 }
+else
+{
+$pacienteActual=paciente::Loginpaciente($_POST['correo'],$_POST['clave']);
+if($pacienteActual)
+{
+	$_SESSION['registrado']=$pacienteActual->apellido.', '.$pacienteActual->nombre;
+	$_SESSION['correo']=$pacienteActual->correo;
+	$_SESSION['clave']=$pacienteActual->clave;
+	$_SESSION['id']=$pacienteActual->id;
+	$retorno="Bienvenido: ".strtoupper($pacienteActual->apellido.', '.$pacienteActual->nombre);
+}
+else
+{
+	$retorno="Contraseña o correo Incorrecta";
+}
+}
+
+
 
 echo $retorno;
 ?>

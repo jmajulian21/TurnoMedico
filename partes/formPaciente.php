@@ -18,15 +18,22 @@
         <br>
          SEXO:<label for="titulo" class="sr-only">Sexo</label>
          <br>
-         
+          
          <input type="radio" name="sexo" value="F" checked>FEMENINO
           <input type="radio" name="sexo" value="M">MASCULINO
        <br>
-        <button  class="btn btn-lg btn-success btn-block" type="submit"><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span>SIGUIENTE >> </button>
+        <br>
+        <label for="correo" class="sr-only">Correo electrónico</label>
+        CORREO: <input type="email" id="correo" class="form-control" >
+        <br>
+        <label for="clave" class="sr-only">Clave</label>
+        CLAVE: <input type="password" id="clave" minlength="4" class="form-control" >
+
+        <button  class="btn btn-lg btn-success btn-block" type="submit"><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span> Guardar </button>
 
       </form>
 
     </div> <!-- /container -->
-<a onClick="parent.location='index.php'" class='btn btn-info'>Pagina Principal</a>
+<!--<a onClick="parent.location='index.php'" class='btn btn-info'>Pagina Principal</a>-->
 
   

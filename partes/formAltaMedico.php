@@ -26,13 +26,12 @@
                       <option value="Lanus">Lanus</option>
                       <option value="Gerli">Gerli</option>
               </select>
-              <br>
-              <br>
+             
         <!--<label for="provincia" class="sr-only" hidden>Provincia</label>
         Provincia: <input type="text" id="provincia" name="provincia"  title="Se necesita un provincia" class="form-control" required="" autofocus="">-->
         <br>
-       <button onClick="parent.location='index.php'"  class="btn btn-lg btn-success btn-block" type="submit"><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span>Guardar</button>
+       <button  class="btn btn-lg btn-success btn-block" type="submit"><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span>Guardar</button>
         
       </form>
-     <a onClick="MostrarLogin()" class='btn btn-info'>Volver Pagina Anterior</a>
+   
     </div> <!-- /container -->

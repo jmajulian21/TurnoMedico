@@ -1,8 +1,8 @@
 
 <?php
 session_start();
-require_once("clases/paciente.php");
-require_once("clases/medico.php");
+
+
 class turno
 {
 	
@@ -13,11 +13,12 @@ class turno
 	public $_nombre;
 	public $fecha;
 	public $hora;
+	public $dni;
 	
 
 	public static function GuardarTurnoMedico($idpaciente,$idmedico,$fecha,$hora)
 	 {
-				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
 				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into turnos(id_paciente,id_medico,fecha,hora)values('$idpaciente','$idmedico','$fecha','$hora')");
 				$consulta->execute();
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
@@ -25,18 +26,20 @@ class turno
 
 	public static function mostrarTurno()
 	{
+			require_once("clases/medico.php");
+			require_once("clases/paciente.php");
 			$mostrar;
-			$x=1;
-			if(isset($_SESSION['paciente_actual']) && isset($_SESSION['medico_actual']) && isset($_SESSION['fecha_actual']) && isset($_SESSION['hora_actual']))
+			
+			if(isset($_SESSION['medico_actual']) && isset($_SESSION['fecha_actual']) && isset($_SESSION['hora_actual']))//isset($_SESSION['paciente_actual']) && 
 			{
-				$paciente=$_SESSION['paciente_actual'];
+				$paciente=$_SESSION['id'];
 				$medico=$_SESSION['medico_actual'];
 				$fecha=$_SESSION['fecha_actual'];
 				$hora=$_SESSION['hora_actual'];
-				$idpaciente=$paciente->GuardarPaciente();
-				turno::GuardarTurnoMedico($idpaciente,$medico->id,$fecha,$hora);
-				$mostrar="Fecha del Turno ".$fecha."  ".$hora." Paciente= ".$paciente->mostrarPaciente()." Medico= ".$medico->mostrarMedico();
+				turno::GuardarTurnoMedico($paciente,$medico->id,$fecha,$hora);
+				$mostrar="Fecha del Turno ".$fecha."  ".$hora." Paciente= ".$paciente." Medico= ".$medico->mostrarMedico();
 			}
+			
 			return $mostrar;
 	}
 
@@ -47,7 +50,21 @@ class turno
 			$consulta->execute();			
 			return $consulta->fetchAll(PDO::FETCH_CLASS, "turno");		
 	}
-	
+
+		  public static function TraerTodoLosTurnosPorMedicos($id)
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("select p.apellido as _apellido,p.nombre as _nombre,p.dni from pacientes p inner join turnos t on t.id_paciente=p.id where t.id_medico='$id'");
+			$consulta->execute();			
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "turno");		
+	}
+			 public static function TraerTodoLosTurnosPorMedicosyDia($id,$fecha)
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("select p.apellido as _apellido,p.nombre as _nombre,p.dni from pacientes p inner join turnos t on t.id_paciente=p.id where t.id_medico='$id' and t.fecha='$fecha'");
+			$consulta->execute();			
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "turno");		
+	}
 }
 
 ?>

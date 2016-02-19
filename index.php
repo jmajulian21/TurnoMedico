@@ -30,23 +30,19 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
 <script type="text/javascript" src="js/geolocalizacionCommon.js"></script>
 <script type="text/javascript" src="js/moduloGeolocalizacion.js"></script>
-<script type="text/javascript" src="js/funcionesMapa.js"></script>
+<script type="text/javascript" src="js/funcionesMapa.js"></script>  
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
- <script type="text/javascript" src="http://s3.amazonaws.com/codecademy-content/courses/hour-of-code/js/alphabet.js"></script>
+<link rel="alternate" href="http://tn.com.ar/rss.xml" type="application/rss+xml">
 </head>
 
 <body>
- <canvas id="myCanvas"></canvas>
-    <script type="text/javascript" src="http://s3.amazonaws.com/codecademy-content/courses/hour-of-code/js/bubbles.js"></script>
-    <script type="text/javascript" src="main.js"></script>
-
 
 <div id="pagewrap">
+
 
 	<header id="header">
 
@@ -57,8 +53,11 @@
 
 		<nav>
 			<ul id="main-nav" class="clearfix">
-				<li><a onclick="Mostrar('MostarPaciente')" class="btn">Solicitar Turno</a></li>
-				<li><a onclick="MostrarLogin()"  class="btn">Administrador</li>
+				<li><a onclick="Mostrar('Organizacion')" class="btn"> Inicio </a></li>
+				<li><a onclick="Mostrar('Mensaje')" class="btn"> Contactanos </a></li>
+				<li><a onclick="Mostrar('video')" class="btn">¿ Quienes Somos ?</a></li>
+				<li><a onclick="MostrarLogin()" class="btn">Iniciar Seccion</a></li>
+				<!--<li><a onclick="MostrarLogin()"  class="btn">Administrador</li>-->
 				<!--<li><a onclick="Mostrar('MostrarGrilla')" class="btn">Listado de Votaciones</a> </li>-->
 				
 			</ul>
@@ -69,16 +68,18 @@
 			
 		</form>
 
+<!--$("#content").css("width", "800px");-->
+
 	</header>
 	<!-- /#header -->
 	
-	<div id="content" >
+	<div id="content" style="width: 820px; height: 700px">
 
 		<article  class="post clearfix">
 
 			<header  >
-				<h1 class="post-title"><a href="#">Julian.Moreno</a></h1>
-				<p class="post-meta"><time class="post-date" datetime="2011-05-08" pubdate>2015</time> <em>en</em> <a href="#">UTN FRA</a></p>
+				<!--<h1 class="post-title"><a href="#"></a></h1>
+				<p class="post-meta"><time class="post-date" datetime="2011-05-08" pubdate>2015</time> <em>en</em> <a href="#">UTN FRA</a></p>-->
 			</header>
 			<hr>
 			<div id="principal">
@@ -100,11 +101,12 @@
 		</div>
 		<!-- /.widget -->
 
-		<section class="widget clearfix" >
-			<h4 class="widgettitle">informe </h4>
+		<section class="widget clearfix">
+			<!--<h4 class="widgettitle"></h4>
 				<div id="informe">
-				<!--contenido dinamico cargado por ajax-->
-				</div>
+					<img src="imagenes/telefonos-hospitales1.jpg"  align=left>
+					<img src="imagenes/edificio.jpg"  align=left>
+				</div>-->
 			
 		</section>
 		<!-- /.widget -->
@@ -124,19 +126,6 @@
 
 </body>
 </html>
-
-<!--<!DOCTYPE html>
-<html>
-  <head>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="http://s3.amazonaws.com/codecademy-content/courses/hour-of-code/js/alphabet.js"></script>
-  </head>
-  <body>
-    <canvas id="myCanvas"></canvas>
-    <script type="text/javascript" src="http://s3.amazonaws.com/codecademy-content/courses/hour-of-code/js/bubbles.js"></script>
-    <script type="text/javascript" src="main.js"></script>
-  </body>
-</html>-->
 
 
 

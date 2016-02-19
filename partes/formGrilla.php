@@ -1,3 +1,4 @@
+
 <?php 
 	require_once("clases/AccesoDatos.php");
 	require_once("clases/turno.php");
@@ -8,10 +9,10 @@
 $("#content").css("width", "900px");
 </script>
 
-<table class="table"  style=" background-color: beige;">
+		<table class="table"  style=" background-color: beige;">
 	<thead>
 		<tr>
-			<th>Medico</th><th>Especialidad</th><th>Apellido  </th><th>Nombre  </th><th>Paciente</th><th>Apellido  </th><th>Nombre  </th><th>FechaTurno</th><th>Fecha        </th><th>Hora       </th>
+			<th>---</th><th>Especialidad</th><th>Apellido</th><th>Nombre</th><th>Paciente</th><th>Apellido</th><th>Nombre</th><th>----</th><th>Fecha        </th><th>Hora       </th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,14 +21,14 @@ $("#content").css("width", "900px");
 
 foreach ($arrayDeturnos as $turno) {
 	echo"<tr>
-			<td bgcolor='yellow'>MEDICO</td>
+			<td bgcolor='yellow'>Medico</td>
 			<td>$turno->especialidad</td>
 			<td>$turno->apellido</td>
             <td>$turno->nombre</td>
-            <td bgcolor='yellow'>PACIENTE</td>
+            <td bgcolor='yellow'>Paciente</td>
             <td>$turno->_apellido</td>
             <td>$turno->_nombre</td>
-            <td bgcolor='yellow'>FECHA</td>
+            <td bgcolor='yellow'>Fecha</td>
             <td>$turno->fecha</td>
             <td>$turno->hora</td>
 			
@@ -36,4 +37,6 @@ foreach ($arrayDeturnos as $turno) {
 		 ?>
 	</tbody>
 </table>
-<a onClick="MostrarLogin()" class='btn btn-info'>Volver Pagina Anterior</a>
+
+
+

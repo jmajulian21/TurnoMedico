@@ -5,7 +5,8 @@ function GuardarPaciente()
 		var apellido=$("#apellido").val();
         var dni=$("#dni").val();
 		var sexo=$('input:radio[name=sexo]:checked').val();
-		
+		 var correo=$("#correo").val();
+		  var clave=$("#clave").val();
 
 
 		var funcionAjax=$.ajax({
@@ -17,18 +18,24 @@ function GuardarPaciente()
 			apellido:apellido,
 			dni:dni,
 			sexo:sexo,
+			correo:correo,
+			clave:clave,
             id: id
 		}
 	});
-	funcionAjax.done(function(retorno){
-		$("#informe").html("Correcto Form login!!!");	
-		Mostrar('MostrarMedicos');
+	funcionAjax.done(function(retorno){	
+		$("#principal").html("");
 	});
 	funcionAjax.fail(function(retorno){	
-		alert(retorno);
+		//alert(retorno);
 		$("#informe").html(retorno.responseText);	
 	});	
 }
+function Guardar()
+{
+    $("#principal").html("");   	
+}
+
 function GuardarMedico(idparametro)
 {
 		var funcionAjax=$.ajax({
@@ -40,7 +47,7 @@ function GuardarMedico(idparametro)
 		}
 	});
 	funcionAjax.done(function(retorno){
-		$("#informe").html("Correcto Form login!!!");	
+		//$("#informe").html("Correcto Form login!!!");	
 		Mostrar('formFecha');
 	});
 	funcionAjax.fail(function(retorno){	
@@ -51,8 +58,9 @@ function GuardarMedico(idparametro)
 }
 function GuardarTurno()
 {
-		var fecha = $("#fecha").val()
-		var hora = $("#hora").val()
+		var fecha=$("#fecha").val();
+		var hora=$("#hora").val();
+
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"POST",
@@ -63,16 +71,18 @@ function GuardarTurno()
 		}
 	});
 	funcionAjax.done(function(retorno){
-		$("#informe").html("Correcto Form login!!!");	
-		parent.location=index.php;
+		$("#principal").html("");
+		//alert(retorno);
+
 	});
 	funcionAjax.fail(function(retorno){	
-		//alert(retorno);
+		alert(retorno);
 		$("#informe").html(retorno.responseText);	
 	});	
 }
 function AltaMedico()
 {
+
         var id = $("#id").val()
 		var especialidad=$("#especialidad").val();
 		var nombre=$("#nombre").val();
@@ -80,7 +90,7 @@ function AltaMedico()
         var localidad=$("#localidad").val();
         var direccion=$("#direccion").val();
 		//var provincia=$("#provincia").val();
-
+			
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"POST",
@@ -98,8 +108,7 @@ function AltaMedico()
 	funcionAjax.done(function(retorno){
 		//alert(retorno);
 			//deslogear();
-		Mostrar('MostrarPrincipal');
-		$("#principal").html(":(");
+		$("#principal").html("");
 		$("#informe").html("cantidad de agregados "+ retorno);	
 		
 	});
@@ -108,3 +117,4 @@ function AltaMedico()
 		$("#informe").html(retorno.responseText);	
 	});	
 }
+

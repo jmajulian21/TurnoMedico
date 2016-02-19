@@ -1,4 +1,5 @@
 <?php
+
 class medico
 {
 	public $id;
@@ -7,10 +8,10 @@ class medico
   	public $nombre;
   	public $direccion;
   	public $localidad;
-  	//public $provincia;
+  	public $provincia;
 
 	
-  
+
 	 public function GuardarMedico()
 	 {
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
@@ -43,9 +44,16 @@ class medico
 	public static function TraerEstadistica() 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select count(t.id_medico) as cantidad, m.especialidad,m.apellido,m.nombre from turnos t inner join medicos m on m.id=t.id_medico group by m.especialidad,m.apellido,m.nombre desc limit 5");
+			$consulta =$objetoAccesoDato->RetornarConsulta("select count(t.id_medico) as cantidad,m.apellido from turnos t inner join medicos m on m.id=t.id_medico group by m.apellido desc limit 5");
 			$consulta->execute();			
 			return $consulta->fetchAll();		
+	}
+	public static function BuscarTodosLosMedicos()
+	{
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("select * from medicos");
+		$consulta->execute();			
+		return $consulta->fetchAll(PDO::FETCH_CLASS, "medico");		
 	}
 	
 }

@@ -11,7 +11,7 @@ $("#informe").html("<img src='imagenes/ajax-loader.gif' style='width: 30px;'/>")
 		url:"php/validarUsuario.php",
 		type:"post",
 		data:{
-			usuario:varUsuario,
+			correo:varUsuario,
 			clave:varClave
 		}
 	});
@@ -23,13 +23,12 @@ $("#informe").html("<img src='imagenes/ajax-loader.gif' style='width: 30px;'/>")
 				//MostarBotones();
 				MostrarLogin();
 
-				$("#BotonLogin").html("Ir a salir<br>-Sesión-");
-				$("#BotonLogin").addClass("btn btn-danger");				
-				$("#usuario").val("usuario: "+retorno);
+				//$("#BotonLogin").html("Ir a salir<br>-Sesión-");
+				//$("#BotonLogin").addClass("btn btn-danger");				
+				//$("#usuario").val("usuario: "+retorno);
 			}else
 			{
 				$("#informe").html("usuario o clave incorrecta");	
-				$("#formLogin").addClass("animated bounceInLeft");
 			}
 	});
 	funcionAjax.fail(function(retorno){
@@ -45,13 +44,14 @@ function deslogear()
 		type:"post"		
 	});
 	funcionAjax.done(function(retorno){
-			//MostarBotones();
-			//MostarLogin();
-			window.location="index.php";
+			MostarBotonesUsuario();
+			MostarBotones();
+			$("#principal").html("");
 			$("#usuario").val("Sin usuario.");
 			$("#BotonLogin").html("Login<br>-Sesión-");
 			$("#BotonLogin").removeClass("btn-danger");
 			$("#BotonLogin").addClass("btn-primary");
+			$("#main-nav").html('');
 			
 	});	
 }
@@ -64,7 +64,19 @@ function MostarBotones()
 	});
 	funcionAjax.done(function(retorno){
 		$("#botonesABM").html(retorno);
-		$("#informe").html("Correcto BOTONES!!!");	
+		//$("#informe").html("Correcto BOTONES!!!");	
+	});
+}
+function MostarBotonesUsuario()
+{		//alert(queMostrar);
+	var funcionAjax=$.ajax({
+		url:"nexo.php",
+		type:"post",
+		data:{queHacer:"MostarBotonesUser"}
+	});
+	funcionAjax.done(function(retorno){
+		$("#main-nav").html(retorno);
+		//$("#informe").html("Correcto BOTONES!!!");	
 	});
 }
 
@@ -77,8 +89,7 @@ function MostrarLogin()
 		data:{queHacer:"MostrarLogin"}
 	});
 	funcionAjax.done(function(retorno){
-		$("#principal").html(retorno);
-		$("#informe").html("Correcto Form login!!!");	
+		$("#principal").html(retorno);	
 		
 	});
 	funcionAjax.fail(function(retorno){

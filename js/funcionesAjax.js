@@ -9,12 +9,10 @@ function Mostrar(queMostrar)
 	});
 	funcionAjax.done(function(retorno){
 		$("#principal").html(retorno);
-		$("#botonesABM").html();
-		$("#informe").html("Correcto BOTONES!!!");	
 	});
 	funcionAjax.fail(function(retorno){
 		$("#principal").html(":(");
-		$("#informe").html("Correcto!!!");	
+		$("#informe").html("Error!!!");	
 
 	});
 	funcionAjax.always(function(retorno){
@@ -23,6 +21,27 @@ function Mostrar(queMostrar)
 	});
 }
 
+function ActualizarIdMedico(nom,fecha)
+{
+	
+	//alert(fecha);
+	var funcionAjax=$.ajax({
+		url:"php/ActualizarGrilla.php",
+		type:"post",
+		data:{
+			id:nom,
+			fech:fecha
+		}
+	});	
+	funcionAjax.done(function(retorno){
+		window.location=('partes/formEXCEL.php');
+	});
+}
+
+function email()
+{
+window.open('partes/email.php');
+}
 
 
 
